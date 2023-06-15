@@ -6,4 +6,6 @@ class User < ApplicationRecord
   validates :password, length: { in: 8..32} ,format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)/, message: "アルファベットと数字を1文字ずつ入れてください" }
   
   has_many :topics
+  has_many :favorites
+  has_many :favorite_topics, through: :favorites, source: 'topic'
 end
