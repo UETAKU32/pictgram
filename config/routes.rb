@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   post '/favorites', to: 'favorites#create'
   delete '/favorites', to: 'favorites#destroy'
   
+  get '/comments/:topic_id/new', to: 'comments#new', as: 'new_comment'
+  post '/comments/:topic_id/create', to: 'comments#create', as: 'create_comment'
+  
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

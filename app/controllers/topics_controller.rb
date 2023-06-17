@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   
-  helper_method :favorite_counter
+  helper_method :favorite_counter, :load_comments, :find_comment_user
   
   def index
     @topics = Topic.all.includes(:favorites, :favorite_users)
@@ -23,6 +23,15 @@ class TopicsController < ApplicationController
   
   def favorite_counter(topic)
     return Favorite.where(topic_id: topic.id).count
+  end
+  
+  def load_comments(topic_id)
+    Comment.where(topic_id: topic_id)
+  end
+  
+  def find_comment_user(user_id)
+    user = User.find_by(id: user_id)
+    user.name
   end
   
   private

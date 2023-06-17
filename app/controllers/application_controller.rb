@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   add_flash_types :success, :info, :warning, :danger
   
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :format_datetime
   
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -11,5 +11,11 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !current_user.nil?
+  end
+  
+  def format_datetime(datetime)
+    date = datetime.strftime('%Y/%m/%d')
+    time = datetime.strftime('%H:%M')
+    "#{date} #{time}"
   end
 end

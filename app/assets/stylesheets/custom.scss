@@ -121,3 +121,17 @@ h1, h2 {
     }
   }
 }
+
+.comments{
+  padding-top: 5px;
+  background-color: #fafafa;
+  .comment-auther{
+    padding-right: 20px;
+    padding-left: 20px;
+    font-weight: bold;
+  }
+  .comment-content{
+    padding-right: 20px;
+    padding-left: 30px;
+  }
+}
